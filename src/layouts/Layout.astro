@@ -1,23 +1,123 @@
+---
+import "../styles/global.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+	canonical?: string;
+	ogImage?: string;
+	robots?: string;
+}
+
+const { 
+	title = "Free Word Counter & Character Count Tool | ToolTails",
+	description = "The most advanced, privacy-first word counter. Get instant character count, reading time, keyword density, and readability insights. 100% local processing.",
+	ogImage = "/og-image.jpg",
+	robots
+} = Astro.props;
+
+// Dynamically construct correct canonical URL matching sitemap (ensuring trailing slash)
+const siteUrl = "https://tooltails.com";
+const path = Astro.url.pathname;
+const cleanPath = path.endsWith("/") ? path : `${path}/`;
+const defaultCanonical = `${siteUrl}${cleanPath}`;
+const canonical = Astro.props.canonical || (path === "/" ? "https://tooltails.com/word-counter/" : defaultCanonical);
+const ogImageURL = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}`;
+
+// Google Search Console Verification Support
+const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION || import.meta.env.GOOGLE_SITE_VERIFICATION;
+
+// Microsoft Clarity Project ID Support
+const clarityProjectId = import.meta.env.PUBLIC_CLARITY_PROJECT_ID || import.meta.env.CLARITY_PROJECT_ID;
+---
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="icon" href="/favicon.ico" sizes="32x32" />
+		
+		{googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
+		
+		{clarityProjectId && (
+			<script type="text/javascript" is:inline define:vars={{ id: clarityProjectId }}>
+				(function(c,l,a,r,i,t,y){
+					c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+					t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+id;
+					y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+				})(window,document,"clarity","script",id);
+			</script>
+		)}
+		
+		{/* Preload fonts for Core Web Vitals performance (prevents layout shifts) */}
+		<link rel="preload" href="https://cdn.jsdelivr.net/font-geist/1.0.0/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="https://cdn.jsdelivr.net/font-geist/1.0.0/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin />
+
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		
+		{/* SEO Meta Tags */}
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
+		{robots && <meta name="robots" content={robots} />}
+
+		{/* Open Graph / Facebook */}
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImageURL} />
+
+		{/* Twitter */}
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonical} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={ogImageURL} />
+
+		{/* Structured Data (JSON-LD) */}
+		<script type="application/ld+json" is:inline>
+			{
+				"@context": "https://schema.org",
+				"@type": "WebApplication",
+				"name": "ToolTails Word Counter",
+				"description": "Professional word counter and text analysis tool with privacy-first local processing.",
+				"url": "https://tooltails.com/word-counter/",
+				"applicationCategory": "UtilityApplication",
+				"operatingSystem": "All",
+				"keywords": "word counter, online word counter, character counter, text analyzer, reading time calculator",
+				"offers": {
+					"@type": "Offer",
+					"price": "0",
+					"priceCurrency": "USD"
+				}
+			}
+		</script>
+
+		<slot name="head" />
+
+		{/* Theme Initialization (Prevents FOUC) */}
+		<script is:inline>
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('tooltails-theme')) {
+					return localStorage.getItem('tooltails-theme');
+				}
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			})();
+			if (theme === 'dark') {
+				document.documentElement.setAttribute('data-theme', 'dark');
+			} else {
+				document.documentElement.setAttribute('data-theme', 'light');
+			}
+		</script>
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

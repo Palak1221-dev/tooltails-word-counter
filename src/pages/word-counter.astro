@@ -553,14 +553,11 @@ const faqs = [
       }
     };
 
-    // Bind basic formatting
     upperBtn.addEventListener('click', () => applyTransformation(t => t.toUpperCase()));
     lowerBtn.addEventListener('click', () => applyTransformation(t => t.toLowerCase()));
     titleBtn.addEventListener('click', () => applyTransformation(toTitleCase));
 
-    // Bind cleanup buttons
-
-
+    // Cleanup Logic
     cleanupSpacesBtn.addEventListener('click', () => applyCleanup(removeExtraSpaces, 'Removed {count} extra spaces'));
     cleanupLinesBtn.addEventListener('click', () => applyCleanup(removeEmptyLines, 'Removed {count} blank lines'));
     cleanupPunctuationBtn.addEventListener('click', () => applyCleanup(normalizePunctuation, 'Fixed {count} punctuation issues'));

@@ -1,0 +1,232 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../../components/layout/SiteHeader.astro';
+import SiteFooter from '../../components/layout/SiteFooter.astro';
+
+const seoTitle = "ToolTails Writing & Productivity Blog | Text Analysis Insights";
+const seoDescription = "Guides, tips, and insights on word counts, presentation timing, social media limits, and readability to improve your writing and productivity.";
+const canonicalUrl = "https://tooltails.com/blog/";
+
+const articles = [
+  {
+    title: "How Many Words Is a 5 Minute Speech? Presentation Pacing Guide",
+    slug: "how-many-words-5-minute-speech",
+    date: "June 20, 2026",
+    readTime: "4 min read",
+    excerpt: "If you have a 5-minute presentation coming up, knowing how many words you need to write is critical. This guide breaks down pacing, speech word counts, and presentation tips.",
+    category: "Speech"
+  },
+  {
+    title: "How Many Words Is a 10 Minute Speech? Pacing & Word Count Guide",
+    slug: "how-many-words-10-minute-speech",
+    date: "June 19, 2026",
+    readTime: "5 min read",
+    excerpt: "Planning a 10-minute presentation? Discover how many words are in a 10-minute speech, standard speaking paces (WPM), and timing tips.",
+    category: "Speech"
+  },
+  {
+    title: "Word Count vs Character Count: What's the Difference?",
+    slug: "word-count-vs-character-count",
+    date: "June 18, 2026",
+    readTime: "4 min read",
+    excerpt: "Why do some platforms limit you to words, while others use characters? Learn the structural differences, counting mechanics, and when to track each metric.",
+    category: "Writing Tips"
+  },
+  {
+    title: "Average Blog Post Length for SEO in 2026",
+    slug: "average-blog-post-length-seo-2026",
+    date: "June 17, 2026",
+    readTime: "6 min read",
+    excerpt: "SEO guidelines continue to evolve. We look at the latest search data to determine the optimal blog post length for SEO in 2026.",
+    category: "SEO"
+  },
+  {
+    title: "Character Limits for Social Media Platforms in 2026",
+    slug: "character-limits-social-media",
+    date: "June 16, 2026",
+    readTime: "5 min read",
+    excerpt: "Don't let your posts get cut off. Stay updated on the latest character restrictions for major social media platforms like Twitter, LinkedIn, and Meta.",
+    category: "Social Media"
+  },
+  {
+    title: "How to Improve Readability in Your Writing: A Practical Guide",
+    slug: "how-to-improve-readability",
+    date: "June 15, 2026",
+    readTime: "6 min read",
+    excerpt: "Clear writing is good writing. Discover how simple word choices, short sentences, and paragraph breaks can transform your readability.",
+    category: "Writing Tips"
+  },
+  {
+    title: "Reading Time vs Speaking Time Explained",
+    slug: "reading-time-vs-speaking-time",
+    date: "June 14, 2026",
+    readTime: "4 min read",
+    excerpt: "We process read text much faster than spoken speech. Find out how reading time and speaking time calculations help content creators and presenters.",
+    category: "Analysis"
+  },
+  {
+    title: "What Is a Good Readability Score? Flesch-Kincaid Guide",
+    slug: "what-is-good-readability-score",
+    date: "June 13, 2026",
+    readTime: "5 min read",
+    excerpt: "Understanding readability scores can help you write for the right audience. Discover how to evaluate grade levels and reading ease scores.",
+    category: "Analysis"
+  }
+];
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://tooltails.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://tooltails.com/blog/"
+    }
+  ]
+};
+---
+
+<Layout title={seoTitle} description={seoDescription} canonical={canonicalUrl}>
+  <script type="application/ld+json" slot="head" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <SiteHeader />
+  
+  <main class="min-h-screen bg-canvas pb-24">
+    {/* Hero Section */}
+    <header class="py-20 border-b border-hairline bg-canvas-soft relative overflow-hidden">
+      <div class="absolute inset-0 mesh-gradient opacity-5 pointer-events-none"></div>
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 mb-4 text-[10px] font-bold text-primary bg-primary/10 border border-primary/20 rounded-full shadow-sm">
+          <span class="uppercase tracking-widest">WRITING INSIGHTS</span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-ink mb-6">
+          ToolTails Productivity & Writing Blog
+        </h1>
+        <p class="text-base md:text-lg text-body max-w-2xl mx-auto leading-relaxed mb-8">
+          Expert guides and insights to help you craft better content. Learn about presentation timing, readability metrics, and writing standards. Try our free <a href="/word-counter" class="text-primary font-bold hover:underline">Word Counter</a> tool.
+        </p>
+
+        {/* Dynamic Search Box */}
+        <div class="max-w-md mx-auto relative group">
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-mute group-focus-within:text-primary transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </div>
+          <input 
+            type="text" 
+            id="search-input" 
+            placeholder="Search articles (e.g. speech, readability...)" 
+            class="w-full pl-11 pr-4 py-3 bg-canvas border border-hairline rounded-full shadow-sm text-sm text-ink placeholder:text-mute/50 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all"
+          />
+        </div>
+      </div>
+    </header>
+
+    {/* Articles Grid Section */}
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 mt-16">
+      <div id="articles-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {articles.map((article) => (
+          <article 
+            class="article-card bg-canvas border border-hairline rounded-[2rem] overflow-hidden shadow-sm hover:shadow-lg hover:border-primary/40 -translate-y-0 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+            data-title={article.title.toLowerCase()}
+            data-excerpt={article.excerpt.toLowerCase()}
+            data-category={article.category.toLowerCase()}
+          >
+            <div class="p-6 md:p-8">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="text-[9px] font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full uppercase tracking-wider">{article.category}</span>
+                <span class="text-[10px] text-mute font-medium">{article.date}</span>
+              </div>
+              <h2 class="text-lg font-bold text-ink tracking-tight mb-3 line-clamp-2 hover:text-primary transition-colors">
+                <a href={`/blog/${article.slug}`}>
+                  {article.title}
+                </a>
+              </h2>
+              <p class="text-sm text-body leading-relaxed line-clamp-3 mb-4">
+                {article.excerpt}
+              </p>
+            </div>
+            
+            <div class="px-6 md:px-8 pb-6 md:pb-8 pt-4 border-t border-hairline flex items-center justify-between">
+              <span class="text-[10px] text-mute font-bold uppercase tracking-widest">{article.readTime}</span>
+              <a href={`/blog/${article.slug}`} class="text-xs font-bold text-primary hover:text-link-hover flex items-center gap-1">
+                Read Article 
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-0.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {/* No results message */}
+      <div id="no-results" class="hidden text-center py-20">
+        <div class="w-12 h-12 rounded-full bg-canvas-soft border border-hairline flex items-center justify-center text-mute mx-auto mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+        <h3 class="text-lg font-bold text-ink mb-1">No articles found</h3>
+        <p class="text-sm text-mute">Try adjusting your search keywords.</p>
+      </div>
+    </section>
+
+    {/* Contextual SEO Link Bar */}
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 mt-20">
+      <div class="bg-canvas-soft border border-hairline rounded-[2rem] p-8 md:p-12 text-center shadow-inner relative overflow-hidden group">
+        <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+        <h3 class="text-xl font-bold tracking-tight text-ink mb-3 relative z-10">Need to check your draft's length?</h3>
+        <p class="text-sm text-body leading-relaxed max-w-xl mx-auto mb-6 relative z-10">
+          Our online text analysis suite calculates total words, syllables, paragraphs, read time, and Flesch-Kincaid scores instantly in your browser.
+        </p>
+        <a 
+          href="/word-counter" 
+          class="relative z-10 inline-flex items-center justify-center px-8 h-11 text-xs font-bold text-on-primary bg-primary hover:bg-primary/95 shadow-md rounded-full active:scale-95 transition-all"
+        >
+          Open Free Word Counter
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</Layout>
+
+<script>
+  const searchInput = document.getElementById('search-input') as HTMLInputElement;
+  const articlesGrid = document.getElementById('articles-grid')!;
+  const noResults = document.getElementById('no-results')!;
+  const cards = document.querySelectorAll('.article-card');
+
+  searchInput?.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase().trim();
+    let visibleCount = 0;
+
+    cards.forEach((card) => {
+      const title = card.getAttribute('data-title') || '';
+      const excerpt = card.getAttribute('data-excerpt') || '';
+      const category = card.getAttribute('data-category') || '';
+      
+      const isMatch = title.includes(query) || excerpt.includes(query) || category.includes(query);
+      
+      if (isMatch) {
+        card.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    if (visibleCount === 0) {
+      articlesGrid.classList.add('hidden');
+      noResults.classList.remove('hidden');
+    } else {
+      articlesGrid.classList.remove('hidden');
+      noResults.classList.add('hidden');
+    }
+  });
+</script>

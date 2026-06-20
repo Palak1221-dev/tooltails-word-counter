@@ -1,0 +1,29 @@
+---
+---
+
+<div class="flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 border-b border-hairline bg-canvas-soft/50 backdrop-blur-md relative z-20">
+  <div class="flex flex-wrap items-center gap-3">
+    <div class="flex items-center gap-2">
+      <div class="w-7 h-7 rounded-full bg-primary/10 text-primary flex items-center justify-center shadow-inner">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </div>
+      <span class="text-[11px] font-extrabold text-ink uppercase tracking-wider hidden min-[380px]:inline">Editor</span>
+    </div>
+    <div class="h-5 w-px bg-hairline hidden min-[380px]:block"></div>
+    <div class="flex flex-wrap items-center gap-1.5">
+      <button id="upper-btn" class="px-2.5 py-1 rounded-full bg-canvas border border-hairline text-body text-[11px] font-medium hover:border-primary hover:text-primary active:bg-primary active:text-white active:border-primary transition-all shadow-sm uppercase">Upper</button>
+      <button id="lower-btn" class="px-2.5 py-1 rounded-full bg-canvas border border-hairline text-body text-[11px] font-medium hover:border-primary hover:text-primary active:bg-primary active:text-white active:border-primary transition-all shadow-sm lowercase">Lower</button>
+      <button id="title-btn" class="px-2.5 py-1 rounded-full bg-canvas border border-hairline text-body text-[11px] font-medium hover:border-primary hover:text-primary active:bg-primary active:text-white active:border-primary transition-all shadow-sm capitalize">Title</button>
+    </div>
+  </div>
+  <div class="flex items-center gap-1.5 shrink-0">
+    <button id="copy-btn" class="group flex items-center gap-1.5 px-3 py-1 rounded-full bg-canvas border border-transparent text-primary text-[11px] font-bold hover:bg-primary/10 transition-all active:scale-95">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+      <span class="hidden min-[380px]:inline">Copy</span>
+    </button>
+    <button id="clear-btn" class="group flex items-center gap-1.5 px-3 py-1 rounded-full bg-canvas border border-transparent text-mute text-[11px] font-bold hover:text-error hover:bg-error/10 transition-all active:scale-95">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 transition-transform group-hover:rotate-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+      <span class="hidden min-[380px]:inline">Clear</span>
+    </button>
+  </div>
+</div>

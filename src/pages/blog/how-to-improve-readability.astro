@@ -1,0 +1,114 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../../components/layout/SiteHeader.astro';
+import SiteFooter from '../../components/layout/SiteFooter.astro';
+
+const seoTitle = "How to Improve Readability in Your Writing: A Practical Guide";
+const seoDescription = "Learn actionable tips to make your writing easier to read, increase comprehension, and improve your Flesch-Kincaid readability score.";
+const canonicalUrl = "https://tooltails.com/blog/how-to-improve-readability/";
+
+const faqs = [
+  {
+    question: "What is readability?",
+    answer: "Readability measures how easy it is for a reader to understand a written text. It relies on elements like vocabulary choice, sentence length, and paragraph structure."
+  },
+  {
+    question: "Why does readability matter for SEO?",
+    answer: "Search engines reward pages that users enjoy reading. Higher readability leads to longer visit durations and lower bounce rates, signaling helpful content to search engines."
+  }
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tooltails.com" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://tooltails.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "How to Improve Readability", "item": "https://tooltails.com/blog/how-to-improve-readability/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+    }))
+  }
+];
+---
+
+<Layout title={seoTitle} description={seoDescription} canonical={canonicalUrl}>
+  <script type="application/ld+json" slot="head" is:inline set:html={JSON.stringify(schema)} />
+
+  <SiteHeader />
+  
+  <main class="min-h-screen bg-canvas pt-8 pb-24">
+    <article class="max-w-3xl mx-auto px-4 sm:px-6">
+      <nav class="flex items-center gap-2 text-xs font-semibold text-mute uppercase tracking-wider mb-8" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-primary transition-colors">Home</a>
+        <span class="text-hairline-strong">/</span>
+        <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
+        <span class="text-hairline-strong">/</span>
+        <span class="text-ink">Writing Tips</span>
+      </nav>
+
+      <header class="mb-10 pb-8 border-b border-hairline">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-[9px] font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Writing Tips</span>
+          <span class="text-xs text-mute font-medium">June 15, 2026</span>
+          <span class="text-xs text-mute font-bold">•</span>
+          <span class="text-xs text-mute font-bold uppercase tracking-widest">6 min read</span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-ink mb-6 leading-tight">
+          How to Improve Readability in Your Writing
+        </h1>
+        <p class="text-lg text-mute leading-relaxed">
+          Clear writing is powerful writing. Learn simple, practical strategies to make your prose easier to read and understand.
+        </p>
+      </header>
+
+      <div class="space-y-8 text-body leading-relaxed text-base font-medium">
+        <p>
+          Regardless of how valuable your ideas are, if your text is difficult to read, your audience will leave. Improving readability is the best way to keep readers engaged.
+        </p>
+        
+        <h2 class="text-2xl font-bold tracking-tight text-ink mt-8">3 Quick Ways to Improve Readability</h2>
+        <ol class="list-decimal pl-6 space-y-3">
+          <li><strong>Shorten Your Sentences</strong>: Aim for an average of 15-20 words per sentence. Splitting long, winding sentences in half makes them instantly easier to digest.</li>
+          <li><strong>Use Simple Words</strong>: Avoid jargon or complex vocabulary. Replace words like "utilize" with "use" and "subsequently" with "next".</li>
+          <li><strong>Create Visual Breathing Room</strong>: Break text into short paragraphs (3-4 lines maximum) and use list formatting to break up long blocks.</li>
+        </ol>
+
+        {/* CTA */}
+        <div class="my-10 bg-canvas-soft border border-hairline rounded-[2rem] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+          <div class="space-y-1.5 text-center md:text-left">
+            <h4 class="text-sm font-bold text-ink">Check your readability score live</h4>
+            <p class="text-xs text-mute leading-relaxed max-w-sm">
+              Use the Tooltails Word Counter readability metrics to monitor Flesch-Kincaid levels as you write.
+            </p>
+          </div>
+          <a href="/word-counter" class="inline-flex items-center justify-center px-6 h-10 text-xs font-bold text-on-primary bg-primary hover:bg-primary/95 rounded-full shadow-md active:scale-95 transition-all whitespace-nowrap">
+            Measure Readability Free
+          </a>
+        </div>
+      </div>
+
+      <section class="mt-20 pt-10 border-t border-hairline">
+        <h3 class="text-xl font-bold tracking-tight text-ink mb-6">Frequently Asked Questions</h3>
+        <div class="space-y-6">
+          {faqs.map(faq => (
+            <div class="space-y-2">
+              <h4 class="font-bold text-ink text-sm">{faq.question}</h4>
+              <p class="text-body text-sm leading-relaxed">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <SiteFooter />
+</Layout>

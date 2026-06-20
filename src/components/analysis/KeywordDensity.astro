@@ -1,0 +1,28 @@
+---
+interface Props {
+  id?: string;
+  limit?: number;
+}
+
+const { id = "keyword-list", limit = 10 } = Astro.props;
+---
+
+<div class="bg-canvas border border-hairline rounded-3xl p-6 md:p-8 shadow-sm transition-all hover:shadow-md relative overflow-hidden group">
+  <div class="absolute top-0 right-0 w-32 h-32 bg-link/5 rounded-full translate-x-1/2 -translate-y-1/2 blur-2xl group-hover:bg-link/10 transition-colors pointer-events-none"></div>
+  <div class="relative z-10 flex items-center justify-between mb-8">
+    <h3 class="text-sm font-bold tracking-tight text-ink">Keyword Density</h3>
+    <span class="text-[10px] font-bold text-mute uppercase tracking-widest">Top {limit} Words</span>
+  </div>
+  <div id={id} class="space-y-4 relative z-10">
+    {[...Array(limit)].map(() => (
+      <div class="flex items-center gap-4 group">
+        <span class="w-24 text-xs font-bold text-body truncate group-hover:text-ink transition-colors">—</span>
+        <div class="flex-grow h-1.5 bg-canvas-soft-2 rounded-full overflow-hidden shadow-inner">
+          <div class="h-full bg-primary/20 group-hover:bg-primary transition-all duration-500"></div>
+        </div>
+        <span class="w-10 text-[10px] font-bold text-mute group-hover:text-ink transition-colors">0%</span>
+      </div>
+    ))}
+  </div>
+</div>
+

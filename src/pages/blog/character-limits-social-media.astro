@@ -1,0 +1,115 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../../components/layout/SiteHeader.astro';
+import SiteFooter from '../../components/layout/SiteFooter.astro';
+
+const seoTitle = "Character Limits for Social Media Platforms in 2026";
+const seoDescription = "A complete guide to character limits across Twitter, LinkedIn, Instagram, Meta, and more. Keep your social media updates perfectly formatted.";
+const canonicalUrl = "https://tooltails.com/blog/character-limits-social-media/";
+
+const faqs = [
+  {
+    question: "What is the Twitter character limit in 2026?",
+    answer: "The standard Twitter/X character limit remains 280 characters for free accounts. Premium subscribers can write much longer posts."
+  },
+  {
+    question: "What is the character limit for LinkedIn posts?",
+    answer: "LinkedIn updates have a maximum length of 3,000 characters. Keeping posts under 1,500 characters generally yields better reading retention."
+  }
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tooltails.com" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://tooltails.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Social Media Limits", "item": "https://tooltails.com/blog/character-limits-social-media/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+    }))
+  }
+];
+---
+
+<Layout title={seoTitle} description={seoDescription} canonical={canonicalUrl}>
+  <script type="application/ld+json" slot="head" is:inline set:html={JSON.stringify(schema)} />
+
+  <SiteHeader />
+  
+  <main class="min-h-screen bg-canvas pt-8 pb-24">
+    <article class="max-w-3xl mx-auto px-4 sm:px-6">
+      <nav class="flex items-center gap-2 text-xs font-semibold text-mute uppercase tracking-wider mb-8" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-primary transition-colors">Home</a>
+        <span class="text-hairline-strong">/</span>
+        <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
+        <span class="text-hairline-strong">/</span>
+        <span class="text-ink">Social Media</span>
+      </nav>
+
+      <header class="mb-10 pb-8 border-b border-hairline">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-[9px] font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Social Media</span>
+          <span class="text-xs text-mute font-medium">June 16, 2026</span>
+          <span class="text-xs text-mute font-bold">•</span>
+          <span class="text-xs text-mute font-bold uppercase tracking-widest">5 min read</span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-ink mb-6 leading-tight">
+          Character Limits for Social Media Platforms
+        </h1>
+        <p class="text-lg text-mute leading-relaxed">
+          Don't let your updates get cut off mid-sentence. Bookmark this social media character limit guide.
+        </p>
+      </header>
+
+      <div class="space-y-8 text-body leading-relaxed text-base font-medium">
+        <p>
+          Each social platform has specific character limits to manage layouts and keep feeds readable. 
+        </p>
+        
+        <h2 class="text-2xl font-bold tracking-tight text-ink mt-8">Summary of Core Platform Limits</h2>
+        <ul class="list-disc pl-6 space-y-3">
+          <li><strong>Twitter (X)</strong>: 280 characters</li>
+          <li><strong>LinkedIn Posts</strong>: 3,000 characters</li>
+          <li><strong>Instagram Captions</strong>: 2,200 characters</li>
+          <li><strong>Meta/Facebook Posts</strong>: 63,206 characters</li>
+        </ul>
+
+        {/* CTA */}
+        <div class="my-10 bg-canvas-soft border border-hairline rounded-[2rem] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+          <div class="space-y-1.5 text-center md:text-left">
+            <h4 class="text-sm font-bold text-ink">Check social limits while drafting</h4>
+            <p class="text-xs text-mute leading-relaxed max-w-sm">
+              Use the Tooltails Word Counter sidebar limit indicators to keep your posts within safe visual boundaries.
+            </p>
+          </div>
+          <a href="/word-counter" class="inline-flex items-center justify-center px-6 h-10 text-xs font-bold text-on-primary bg-primary hover:bg-primary/95 rounded-full shadow-md active:scale-95 transition-all whitespace-nowrap">
+            Write Social Posts
+          </a>
+        </div>
+      </div>
+
+      <section class="mt-20 pt-10 border-t border-hairline">
+        <h3 class="text-xl font-bold tracking-tight text-ink mb-6">Frequently Asked Questions</h3>
+        <div class="space-y-6">
+          {faqs.map(faq => (
+            <div class="space-y-2">
+              <h4 class="font-bold text-ink text-sm">{faq.question}</h4>
+              <p class="text-body text-sm leading-relaxed">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <SiteFooter />
+</Layout>

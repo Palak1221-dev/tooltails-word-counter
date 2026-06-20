@@ -1,0 +1,200 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../../components/layout/SiteHeader.astro';
+import SiteFooter from '../../components/layout/SiteFooter.astro';
+
+const seoTitle = "Word Count vs Character Count: What's the Difference?";
+const seoDescription = "Understand the key differences between word count and character count, how text processors count them, and why they matter for writing limits.";
+const canonicalUrl = "https://tooltails.com/blog/word-count-vs-character-count/";
+
+const faqs = [
+  {
+    question: "Do spaces count as characters?",
+    answer: "Yes, standard character counts include spaces, punctuation marks, and symbols. However, most tools (including ToolTails) provide a separate 'characters without spaces' metric for specific academic or publisher requirements."
+  },
+  {
+    question: "How many characters are in an average word?",
+    answer: "In English, the average word length is approximately 5 characters. When including the trailing space, this averages to about 6 characters per word."
+  },
+  {
+    question: "Why do social media sites use character limits instead of word limits?",
+    answer: "Character limits relate directly to database storage constraints and screen layouts. Restricting characters ensures posts fit perfectly within UI designs regardless of how long the individual words are."
+  }
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://tooltails.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://tooltails.com/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Word Count vs Character Count",
+        "item": "https://tooltails.com/blog/word-count-vs-character-count/"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+];
+---
+
+<Layout title={seoTitle} description={seoDescription} canonical={canonicalUrl}>
+  <script type="application/ld+json" slot="head" is:inline set:html={JSON.stringify(schema)} />
+
+  <SiteHeader />
+  
+  <main class="min-h-screen bg-canvas pt-8 pb-24">
+    <article class="max-w-3xl mx-auto px-4 sm:px-6">
+      
+      {/* Breadcrumbs Navigation UI */}
+      <nav class="flex items-center gap-2 text-xs font-semibold text-mute uppercase tracking-wider mb-8" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-primary transition-colors">Home</a>
+        <span class="text-hairline-strong">/</span>
+        <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
+        <span class="text-hairline-strong">/</span>
+        <span class="text-ink">Writing Metrics</span>
+      </nav>
+
+      {/* Header */}
+      <header class="mb-10 pb-8 border-b border-hairline">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-[9px] font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Writing Tips</span>
+          <span class="text-xs text-mute font-medium">June 18, 2026</span>
+          <span class="text-xs text-mute font-bold">•</span>
+          <span class="text-xs text-mute font-bold uppercase tracking-widest">4 min read</span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-ink mb-6 leading-tight">
+          Word Count vs Character Count: What's the Difference?
+        </h1>
+        <p class="text-lg text-mute leading-relaxed">
+          Why do some writing targets focus on words while others count characters? Learn the key technical differences and when to track each metric.
+        </p>
+      </header>
+
+      {/* Content */}
+      <div class="space-y-8 text-body leading-relaxed text-base font-medium">
+        <p>
+          If you write online, you are constantly encountering limits. Twitter limits your posts to 280 characters. Academic essays ask for a 2,000-word limit. SEO title tags are measured in characters.
+        </p>
+        <p>
+          While they both measure the length of your text, they represent very different units. Understanding how they are calculated will help you meet writing targets without getting caught off guard.
+        </p>
+
+        <h2 class="text-2xl font-bold tracking-tight text-ink mt-8">Definitions and Core Differences</h2>
+        
+        <h3 class="text-lg font-bold tracking-tight text-ink mt-6">What Is a Word?</h3>
+        <p>
+          A <strong>word</strong> is a sequence of characters that represents a distinct unit of meaning. In text editors, a word is defined as any string of characters separated by a space, hyphen, or line break. For example, the sentence "Write content easily." contains three words.
+        </p>
+
+        <h3 class="text-lg font-bold tracking-tight text-ink mt-6">What Is a Character?</h3>
+        <p>
+          A <strong>character</strong> is the smallest possible unit of written text. This includes letters, numbers, punctuation marks, spacing, tabs, emojis, and paragraph line breaks. In the sentence "Hi, there!", there are 3 letters in the first word, a comma (1), a space (1), 5 letters in the second word, and an exclamation mark (1), leading to 10 total characters.
+        </p>
+
+        {/* Dynamic CTA Box */}
+        <div class="my-10 bg-canvas-soft border border-hairline rounded-[2rem] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+          <div class="space-y-1.5 text-center md:text-left">
+            <h4 class="text-sm font-bold text-ink">Instantly analyze your draft's structure</h4>
+            <p class="text-xs text-mute leading-relaxed max-w-sm">
+              Our free Word Counter displays exact words, characters with spaces, and characters without spaces side by side.
+            </p>
+          </div>
+          <a 
+            href="/word-counter" 
+            class="inline-flex items-center justify-center px-6 h-10 text-xs font-bold text-on-primary bg-primary hover:bg-primary/95 rounded-full shadow-md active:scale-95 transition-all whitespace-nowrap"
+          >
+            Check Your Text Now
+          </a>
+        </div>
+
+        <h2 class="text-2xl font-bold tracking-tight text-ink mt-10">Word Count vs Character Count Comparison</h2>
+        <div class="overflow-x-auto my-6 border border-hairline rounded-2xl shadow-inner bg-canvas">
+          <table class="w-full text-left border-collapse text-sm">
+            <thead>
+              <tr class="bg-canvas-soft border-b border-hairline font-bold text-ink">
+                <th class="p-4">Feature</th>
+                <th class="p-4">Word Count</th>
+                <th class="p-4">Character Count</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-hairline">
+              <tr>
+                <td class="p-4 font-bold text-ink">Separation Rule</td>
+                <td class="p-4">Divided by whitespace or punctuation</td>
+                <td class="p-4">Every individual keystroke/unit counts</td>
+              </tr>
+              <tr class="bg-canvas-soft/30">
+                <td class="p-4 font-bold text-ink">Includes Spaces?</td>
+                <td class="p-4">No</td>
+                <td class="p-4">Yes (usually, though custom filters exist)</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-bold text-ink">Main Use Case</td>
+                <td class="p-4">Articles, essays, novels, and speech writing</td>
+                <td class="p-4">Social media layouts, meta titles, coding</td>
+              </tr>
+              <tr class="bg-canvas-soft/30">
+                <td class="p-4 font-bold text-ink">Common Average</td>
+                <td class="p-4">1 WPM contains ~5 characters</td>
+                <td class="p-4">6 characters per word (with space)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="text-2xl font-bold tracking-tight text-ink mt-10">When to Use Each Metric</h2>
+        
+        <h3 class="text-lg font-bold tracking-tight text-ink mt-6">Use Word Count for Depth and Pacing</h3>
+        <p>
+          Word counts are standard for content creators. If you are drafting a blog post, a newsletter, or a novel, counting words measures the informative depth of your writing. It also relates directly to reading time and speaking speed calculations.
+        </p>
+
+        <h3 class="text-lg font-bold tracking-tight text-ink mt-6">Use Character Count for Formats and Constraints</h3>
+        <p>
+          Character counts matter when text must fit within physical boundaries. Databases, mobile screen sizes, search engine result pages (SERPs), and platform inputs (like LinkedIn profile headlines or Twitter updates) enforce strict limits to prevent text from being truncated or breaking layout constraints.
+        </p>
+      </div>
+
+      {/* Article FAQs Section */}
+      <section class="mt-20 pt-10 border-t border-hairline">
+        <h3 class="text-xl font-bold tracking-tight text-ink mb-6">Frequently Asked Questions</h3>
+        <div class="space-y-6">
+          {faqs.map(faq => (
+            <div class="space-y-2">
+              <h4 class="font-bold text-ink text-sm">{faq.question}</h4>
+              <p class="text-body text-sm leading-relaxed">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+    </article>
+  </main>
+  
+  <SiteFooter />
+</Layout>

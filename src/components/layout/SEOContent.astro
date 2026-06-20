@@ -1,0 +1,21 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<section class="px-4 sm:px-6 py-16 md:py-24 bg-canvas border-t border-hairline">
+  <div class="max-w-4xl mx-auto">
+    {title && (
+      <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-12 md:mb-16">
+        <h2 class="text-2xl md:text-4xl font-bold tracking-tight text-ink">{title}</h2>
+        <div class="hidden sm:block h-px w-full bg-hairline"></div>
+      </div>
+    )}
+    <div class="grid md:grid-cols-2 gap-16 text-body">
+      <slot />
+    </div>
+  </div>
+</section>

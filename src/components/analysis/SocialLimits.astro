@@ -1,0 +1,47 @@
+---
+interface Platform {
+  name: string;
+  limit: number;
+  id: string;
+}
+
+interface Props {
+  platforms?: Platform[];
+}
+
+const defaultPlatforms: Platform[] = [
+  { name: 'Twitter', limit: 280, id: 'limit-twitter' },
+  { name: 'LinkedIn', limit: 3000, id: 'limit-linkedin' },
+  { name: 'Instagram', limit: 2200, id: 'limit-instagram' },
+  { name: 'Meta Description', limit: 160, id: 'limit-meta' },
+];
+
+const { platforms = defaultPlatforms } = Astro.props;
+---
+
+<div class="mb-12">
+  <div class="flex items-center gap-3 mb-6">
+    <h3 class="text-[11px] font-bold text-mute uppercase tracking-widest whitespace-nowrap">Platform Benchmarks</h3>
+    <div class="h-px w-full bg-hairline"></div>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    {platforms.map((platform) => (
+      <div class="bg-canvas border border-hairline rounded-3xl p-6 shadow-sm transition-all hover:shadow-md group">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-[11px] font-bold text-ink uppercase tracking-tight group-hover:text-primary transition-colors">{platform.name}</span>
+          <span class="text-[10px] font-bold text-mute bg-canvas-soft px-2 py-0.5 rounded-full border border-hairline">{platform.limit}</span>
+        </div>
+        <div class="h-1.5 bg-canvas-soft-2 rounded-full overflow-hidden mb-3 shadow-inner">
+          <div id={`${platform.id}-bar`} class="h-full bg-primary w-0 transition-all duration-500 ease-out"></div>
+        </div>
+        <div class="flex justify-between items-center font-bold">
+          <div class="flex items-baseline gap-1">
+            <span id={`${platform.id}-count`} class="text-sm font-bold text-ink leading-none">0</span>
+            <span class="text-[9px] text-mute uppercase tracking-widest">Chars</span>
+          </div>
+          <span id={`${platform.id}-percent`} class="text-[10px] font-bold text-mute">0%</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

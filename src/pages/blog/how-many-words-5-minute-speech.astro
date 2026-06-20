@@ -1,0 +1,207 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../../components/layout/SiteHeader.astro';
+import SiteFooter from '../../components/layout/SiteFooter.astro';
+
+const seoTitle = "How Many Words Is a 5 Minute Speech? Pacing & Timing Guide";
+const seoDescription = "How many words are in a 5-minute speech? Learn standard speaking speeds (WPM), calculate your presentation length, and read pacing tips.";
+const canonicalUrl = "https://tooltails.com/blog/how-many-words-5-minute-speech/";
+
+const faqs = [
+  {
+    question: "How do I calculate words for a 5-minute speech?",
+    answer: "Multiply your target speaking speed in words per minute (WPM) by 5. For example, at an average speed of 130 WPM, a 5-minute speech is 650 words."
+  },
+  {
+    question: "Is 750 words too long for a 5-minute speech?",
+    answer: "Yes, 750 words requires speaking at a fast pace of 150 WPM. To ensure your audience understands your message, it is better to aim for 600 to 650 words and speak at a conversational pace."
+  },
+  {
+    question: "How many pages is a 5-minute speech?",
+    answer: "A 5-minute speech (about 650 words) is approximately 1.3 pages when typed double-spaced, or 0.6 pages single-spaced using standard 12-point font."
+  }
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://tooltails.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://tooltails.com/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "How Many Words Is a 5 Minute Speech?",
+        "item": "https://tooltails.com/blog/how-many-words-5-minute-speech/"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+];
+---
+
+<Layout title={seoTitle} description={seoDescription} canonical={canonicalUrl}>
+  <script type="application/ld+json" slot="head" is:inline set:html={JSON.stringify(schema)} />
+
+  <SiteHeader />
+  
+  <main class="min-h-screen bg-canvas pt-8 pb-24">
+    <article class="max-w-3xl mx-auto px-4 sm:px-6">
+      
+      {/* Breadcrumbs Navigation UI */}
+      <nav class="flex items-center gap-2 text-xs font-semibold text-mute uppercase tracking-wider mb-8" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-primary transition-colors">Home</a>
+        <span class="text-hairline-strong">/</span>
+        <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
+        <span class="text-hairline-strong">/</span>
+        <span class="text-ink">Speech Timing</span>
+      </nav>
+
+      {/* Header */}
+      <header class="mb-10 pb-8 border-b border-hairline">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-[9px] font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Speech</span>
+          <span class="text-xs text-mute font-medium">June 20, 2026</span>
+          <span class="text-xs text-mute font-bold">•</span>
+          <span class="text-xs text-mute font-bold uppercase tracking-widest">4 min read</span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-ink mb-6 leading-tight">
+          How Many Words Is a 5 Minute Speech?
+        </h1>
+        <p class="text-lg text-mute leading-relaxed">
+          If you have a 5-minute presentation coming up, knowing your target word count is critical. Here is how speaking rates impact your timing.
+        </p>
+      </header>
+
+      {/* Content */}
+      <div class="space-y-8 text-body leading-relaxed text-base font-medium">
+        <p>
+          Whether you are preparing a corporate presentation, a wedding toast, or a class project, keeping your speech within the designated 5-minute limit is a challenge. Going over time can look unprofessional, while finishing too quickly might leave your audience confused.
+        </p>
+        <p>
+          To write the perfect draft, you need to understand the relationship between speaking rates and word counts.
+        </p>
+
+        <h2 class="text-2xl font-bold tracking-tight text-ink mt-8">The Short Answer: 550 to 750 Words</h2>
+        <p>
+          For most presenters, a 5-minute speech falls between <strong>550 and 750 words</strong>. The exact number depends heavily on your natural speaking speed:
+        </p>
+
+        <ul class="list-disc pl-6 space-y-3">
+          <li><strong>Slow Pacing (110 WPM)</strong>: Best for formal lectures, technical briefings, or non-native audiences. A 5-minute speech at this speed is <strong>550 words</strong>.</li>
+          <li><strong>Conversational Pacing (130 WPM)</strong>: The sweet spot for general presentations, keynotes, and casual talks. This equals <strong>650 words</strong>.</li>
+          <li><strong>Fast Pacing (150 WPM)</strong>: Typical for energetic pitches, fast talkers, or cramming information. A 5-minute speech at this speed is <strong>750 words</strong>.</li>
+        </ul>
+
+        {/* Dynamic CTA Box */}
+        <div class="my-10 bg-canvas-soft border border-hairline rounded-[2rem] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+          <div class="space-y-1.5 text-center md:text-left">
+            <h4 class="text-sm font-bold text-ink">Want to measure your draft's speaking time?</h4>
+            <p class="text-xs text-mute leading-relaxed max-w-sm">
+              Paste your text into the ToolTails Word Counter to calculate reading time and speaking speed instantly.
+            </p>
+          </div>
+          <a 
+            href="/word-counter" 
+            class="inline-flex items-center justify-center px-6 h-10 text-xs font-bold text-on-primary bg-primary hover:bg-primary/95 rounded-full shadow-md active:scale-95 transition-all whitespace-nowrap"
+          >
+            Check Word Count Now
+          </a>
+        </div>
+
+        <h2 class="text-2xl font-bold tracking-tight text-ink mt-10">Word Count Pacing Reference Table</h2>
+        <p>
+          Refer to this table to determine the word counts needed for different speeds:
+        </p>
+
+        <div class="overflow-x-auto my-6 border border-hairline rounded-2xl shadow-inner bg-canvas">
+          <table class="w-full text-left border-collapse text-sm">
+            <thead>
+              <tr class="bg-canvas-soft border-b border-hairline font-bold text-ink">
+                <th class="p-4">Speaking Pace</th>
+                <th class="p-4">Speed (WPM)</th>
+                <th class="p-4">Total Words</th>
+                <th class="p-4">Double-Spaced Pages</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-hairline">
+              <tr>
+                <td class="p-4 font-bold text-ink">Slow & Deliberate</td>
+                <td class="p-4">110 WPM</td>
+                <td class="p-4">550 words</td>
+                <td class="p-4">~1.1 pages</td>
+              </tr>
+              <tr class="bg-canvas-soft/30">
+                <td class="p-4 font-bold text-ink">Conversational (Recommended)</td>
+                <td class="p-4">130 WPM</td>
+                <td class="p-4">650 words</td>
+                <td class="p-4">~1.3 pages</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-bold text-ink">Energetic & Fast</td>
+                <td class="p-4">150 WPM</td>
+                <td class="p-4">750 words</td>
+                <td class="p-4">~1.5 pages</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="text-2xl font-bold tracking-tight text-ink mt-10">3 Pacing Tips for a 5-Minute Speech</h2>
+        
+        <h3 class="text-lg font-bold tracking-tight text-ink mt-6">1. Don't Over-Write</h3>
+        <p>
+          The most common speech writing error is writing too much. If your draft is 800 words, you will be forced to rush through it, which ruins your delivery. Aim for 600 to 620 words to give yourself room to pause and breathe.
+        </p>
+
+        <h3 class="text-lg font-bold tracking-tight text-ink mt-6">2. Factor in the "Real World"</h3>
+        <p>
+          In a live environment, you will naturally pause for slides, audience laughter, or breathing breaks. These pauses add about 15-30 seconds to a 5-minute speech. Reduce your written word count by 10% to account for this.
+        </p>
+
+        <h3 class="text-lg font-bold tracking-tight text-ink mt-6">3. Practice Out Loud</h3>
+        <p>
+          Reading silently is much faster than speaking. Always time your draft by reading it aloud at your normal presentation volume, pacing, and hand gestures to ensure an accurate test.
+        </p>
+      </div>
+
+      {/* Article FAQs Section */}
+      <section class="mt-20 pt-10 border-t border-hairline">
+        <h3 class="text-xl font-bold tracking-tight text-ink mb-6">Frequently Asked Questions</h3>
+        <div class="space-y-6">
+          {faqs.map(faq => (
+            <div class="space-y-2">
+              <h4 class="font-bold text-ink text-sm">{faq.question}</h4>
+              <p class="text-body text-sm leading-relaxed">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+    </article>
+  </main>
+  
+  <SiteFooter />
+</Layout>

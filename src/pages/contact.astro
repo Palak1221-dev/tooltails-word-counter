@@ -1,0 +1,125 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/layout/SiteHeader.astro';
+import SiteFooter from '../components/layout/SiteFooter.astro';
+import FAQSection from '../components/layout/FAQSection.astro';
+
+const seoTitle = "Contact Tooltails | Feedback, Support & Suggestions";
+const seoDescription = "Contact Tooltails for support, bug reports, feature requests, or feedback about our free online tools.";
+const canonicalUrl = "https://tooltails.com/contact/";
+
+const faqs = [
+  {
+    question: "How can I contact Tooltails?",
+    answer: "The best way to reach us is by emailing hello@tooltails.com directly. We read every message and aim to respond to inquiries within 24-48 hours."
+  },
+  {
+    question: "How do I report a bug?",
+    answer: "If you encounter an issue with any of our tools, please send an email to hello@tooltails.com. Include the tool name, a brief description of the problem, and your browser or device information if possible."
+  },
+  {
+    question: "Can I suggest a new tool?",
+    answer: "Absolutely! We love building tools that solve real problems. Send your ideas over, and if it aligns with our privacy-first, bloat-free philosophy, we might just build it."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<Layout title={seoTitle} description={seoDescription} canonical={canonicalUrl}>
+  <SiteHeader />
+  
+  <main class="min-h-screen pt-16 pb-24 bg-canvas">
+    <article class="px-4 sm:px-6">
+      <div class="max-w-4xl mx-auto">
+        <header class="mb-12 text-center">
+          <div class="inline-flex items-center gap-2 px-3 py-1 mb-4 text-[10px] font-bold text-primary bg-primary/10 border border-primary/20 rounded-full shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span class="uppercase tracking-widest">GET IN TOUCH</span>
+          </div>
+          <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-ink mb-4">Contact Tooltails</h1>
+          <p class="text-lg text-mute leading-relaxed max-w-2xl mx-auto">
+            Whether you need help, found a bug, or have a brilliant idea for a new tool, we'd love to hear from you.
+          </p>
+        </header>
+
+        {/* Contact Cards Grid */}
+        <div class="grid md:grid-cols-2 gap-6 mb-16">
+          
+          <div class="bg-canvas border border-hairline p-8 rounded-[2rem] shadow-sm relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/40 group">
+            <div class="absolute top-0 left-0 w-full h-1 bg-error/80 group-hover:bg-error transition-colors"></div>
+            <div class="w-10 h-10 rounded-full bg-error/10 text-error flex items-center justify-center mb-5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 2 1.88 1.88"></path><path d="M14.12 3.88 16 2"></path><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"></path><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"></path><path d="M12 20v-9"></path><path d="M6.53 9C4.6 8.8 3 7.1 3 5"></path><path d="M17.47 9c1.93-.2 3.53-1.9 3.53-4"></path><path d="M8 12H2"></path><path d="M22 12h-6"></path><path d="M8 17H2"></path><path d="M22 17h-6"></path></svg>
+            </div>
+            <h2 class="text-xl font-bold tracking-tight text-ink mb-2">Report a Bug</h2>
+            <p class="text-sm text-mute leading-relaxed">
+              Found something broken? Let us know so we can squash it and keep our tools running smoothly.
+            </p>
+          </div>
+
+          <div class="bg-canvas border border-hairline p-8 rounded-[2rem] shadow-sm relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/40 group">
+            <div class="absolute top-0 left-0 w-full h-1 bg-success/80 group-hover:bg-success transition-colors"></div>
+            <div class="w-10 h-10 rounded-full bg-success/10 text-success flex items-center justify-center mb-5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+            </div>
+            <h2 class="text-xl font-bold tracking-tight text-ink mb-2">Suggest a New Tool</h2>
+            <p class="text-sm text-mute leading-relaxed">
+              Have an idea for a utility that would make your life easier? We are always looking for new things to build.
+            </p>
+          </div>
+
+          <div class="bg-canvas border border-hairline p-8 rounded-[2rem] shadow-sm relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/40 group">
+            <div class="absolute top-0 left-0 w-full h-1 bg-primary/80 group-hover:bg-primary transition-colors"></div>
+            <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            </div>
+            <h2 class="text-xl font-bold tracking-tight text-ink mb-2">General Feedback</h2>
+            <p class="text-sm text-mute leading-relaxed">
+              Love Tooltails? Have thoughts on how we can improve an existing tool? Drop us a line.
+            </p>
+          </div>
+
+          <div class="bg-canvas border border-hairline p-8 rounded-[2rem] shadow-sm relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/40 group">
+            <div class="absolute top-0 left-0 w-full h-1 bg-warning/80 group-hover:bg-warning transition-colors"></div>
+            <div class="w-10 h-10 rounded-full bg-warning/10 text-warning flex items-center justify-center mb-5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            </div>
+            <h2 class="text-xl font-bold tracking-tight text-ink mb-2">Business Enquiries</h2>
+            <p class="text-sm text-mute leading-relaxed">
+              For partnerships, media, or other business-related questions, reach out to our team directly.
+            </p>
+          </div>
+          
+        </div>
+
+        {/* Prominent Email Display */}
+        <div class="bg-canvas-soft border border-hairline rounded-[2rem] p-10 text-center shadow-inner">
+          <p class="text-sm font-bold text-mute uppercase tracking-widest mb-4">Send us an email</p>
+          <a href="mailto:hello@tooltails.com" class="inline-flex text-2xl md:text-4xl font-black tracking-tight text-ink hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg px-2">
+            hello@tooltails.com
+          </a>
+        </div>
+
+      </div>
+    </article>
+
+    <div class="mt-20 pt-8 border-t border-hairline bg-canvas-soft">
+      <FAQSection items={faqs} />
+    </div>
+  </main>
+
+  <SiteFooter />
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</Layout>

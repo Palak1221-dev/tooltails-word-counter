@@ -1,0 +1,119 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../../components/layout/SiteHeader.astro';
+import SiteFooter from '../../components/layout/SiteFooter.astro';
+
+const seoTitle = "Reading Time vs Speaking Time Explained | ToolTails";
+const seoDescription = "Why do reading time and speaking time differ? Learn how to calculate both based on standard rates and pace your content correctly.";
+const canonicalUrl = "https://tooltails.com/blog/reading-time-vs-speaking-time/";
+
+const faqs = [
+  {
+    question: "What is the average reading speed?",
+    answer: "The average silent reading speed for adults is around 200 to 250 words per minute (WPM). ToolTails uses a standard speed of 200 WPM to estimate reading times."
+  },
+  {
+    question: "What is the average speaking speed?",
+    answer: "The average speaking speed for presentations, lectures, and podcasts is approximately 130 to 150 words per minute (WPM). Spoken speech is slower because of vocal pacing, articulation, and pauses."
+  }
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tooltails.com" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://tooltails.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Reading vs Speaking Time", "item": "https://tooltails.com/blog/reading-time-vs-speaking-time/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+    }))
+  }
+];
+---
+
+<Layout title={seoTitle} description={seoDescription} canonical={canonicalUrl}>
+  <script type="application/ld+json" slot="head" is:inline set:html={JSON.stringify(schema)} />
+
+  <SiteHeader />
+  
+  <main class="min-h-screen bg-canvas pt-8 pb-24">
+    <article class="max-w-3xl mx-auto px-4 sm:px-6">
+      <nav class="flex items-center gap-2 text-xs font-semibold text-mute uppercase tracking-wider mb-8" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-primary transition-colors">Home</a>
+        <span class="text-hairline-strong">/</span>
+        <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
+        <span class="text-hairline-strong">/</span>
+        <span class="text-ink">Linguistic Pace</span>
+      </nav>
+
+      <header class="mb-10 pb-8 border-b border-hairline">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-[9px] font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Analysis</span>
+          <span class="text-xs text-mute font-medium">June 14, 2026</span>
+          <span class="text-xs text-mute font-bold">•</span>
+          <span class="text-xs text-mute font-bold uppercase tracking-widest">4 min read</span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-ink mb-6 leading-tight">
+          Reading Time vs Speaking Time Explained
+        </h1>
+        <p class="text-lg text-mute leading-relaxed">
+          Why do reading time and speaking time calculations differ, and how can you use them to pace your writing?
+        </p>
+      </header>
+
+      <div class="space-y-8 text-body leading-relaxed text-base font-medium">
+        <p>
+          If you copy a text draft, you will notice that its estimated reading time is significantly shorter than its estimated speaking time. Let's look at why this happens.
+        </p>
+        
+        <h2 class="text-2xl font-bold tracking-tight text-ink mt-8">The Core Speed Discrepancy</h2>
+        <p>
+          We read text silently much faster than we can speak it out loud. 
+        </p>
+        <ul class="list-disc pl-6 space-y-3">
+          <li><strong>Reading Speed</strong> averages **200 WPM**.</li>
+          <li><strong>Speaking Speed</strong> averages **130 WPM**.</li>
+        </ul>
+        <p>
+          This means a 1,000-word draft takes about 5 minutes to read silently, but will take closer to 7.5 to 8 minutes to deliver as a presentation.
+        </p>
+
+        {/* CTA */}
+        <div class="my-10 bg-canvas-soft border border-hairline rounded-[2rem] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+          <div class="space-y-1.5 text-center md:text-left">
+            <h4 class="text-sm font-bold text-ink">Calculate reading and speaking times instantly</h4>
+            <p class="text-xs text-mute leading-relaxed max-w-sm">
+              Paste your script into the Tooltails Word Counter to get real-time timing indicators.
+            </p>
+          </div>
+          <a href="/word-counter" class="inline-flex items-center justify-center px-6 h-10 text-xs font-bold text-on-primary bg-primary hover:bg-primary/95 rounded-full shadow-md active:scale-95 transition-all whitespace-nowrap">
+            Calculate Speech Pacing
+          </a>
+        </div>
+      </div>
+
+      <section class="mt-20 pt-10 border-t border-hairline">
+        <h3 class="text-xl font-bold tracking-tight text-ink mb-6">Frequently Asked Questions</h3>
+        <div class="space-y-6">
+          {faqs.map(faq => (
+            <div class="space-y-2">
+              <h4 class="font-bold text-ink text-sm">{faq.question}</h4>
+              <p class="text-body text-sm leading-relaxed">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <SiteFooter />
+</Layout>

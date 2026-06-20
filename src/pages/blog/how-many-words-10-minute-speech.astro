@@ -1,0 +1,211 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../../components/layout/SiteHeader.astro';
+import SiteFooter from '../../components/layout/SiteFooter.astro';
+
+const seoTitle = "How Many Words Is a 10 Minute Speech? Pacing & Word Count Guide";
+const seoDescription = "Planning a 10-minute presentation? Discover how many words are in a 10-minute speech, standard speaking paces (WPM), and timing tips.";
+const canonicalUrl = "https://tooltails.com/blog/how-many-words-10-minute-speech/";
+
+const faqs = [
+  {
+    question: "What is the word count for a 10-minute speech?",
+    answer: "A standard 10-minute speech is between 1,100 and 1,500 words. At an average conversational speed of 130 WPM, you will need approximately 1,300 words."
+  },
+  {
+    question: "How many pages is a 1,300-word speech?",
+    answer: "A 1,300-word speech represents approximately 2.6 pages typed double-spaced, or 1.3 pages single-spaced, using standard margins and 12-point fonts."
+  },
+  {
+    question: "How do I pace a 10-minute presentation?",
+    answer: "Break it down: 1.5 minutes for introduction, 7 minutes for your three core points, and 1.5 minutes for a summary and call-to-action."
+  }
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://tooltails.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://tooltails.com/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "How Many Words Is a 10 Minute Speech?",
+        "item": "https://tooltails.com/blog/how-many-words-10-minute-speech/"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+];
+---
+
+<Layout title={seoTitle} description={seoDescription} canonical={canonicalUrl}>
+  <script type="application/ld+json" slot="head" is:inline set:html={JSON.stringify(schema)} />
+
+  <SiteHeader />
+  
+  <main class="min-h-screen bg-canvas pt-8 pb-24">
+    <article class="max-w-3xl mx-auto px-4 sm:px-6">
+      
+      {/* Breadcrumbs Navigation UI */}
+      <nav class="flex items-center gap-2 text-xs font-semibold text-mute uppercase tracking-wider mb-8" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-primary transition-colors">Home</a>
+        <span class="text-hairline-strong">/</span>
+        <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
+        <span class="text-hairline-strong">/</span>
+        <span class="text-ink">Speech Timing</span>
+      </nav>
+
+      {/* Header */}
+      <header class="mb-10 pb-8 border-b border-hairline">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-[9px] font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Speech</span>
+          <span class="text-xs text-mute font-medium">June 19, 2026</span>
+          <span class="text-xs text-mute font-bold">•</span>
+          <span class="text-xs text-mute font-bold uppercase tracking-widest">5 min read</span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-ink mb-6 leading-tight">
+          How Many Words Is a 10 Minute Speech?
+        </h1>
+        <p class="text-lg text-mute leading-relaxed">
+          Planning a 10-minute presentation? Learn how speaking rates alter your timing, how to structure your slides, and optimal word counts.
+        </p>
+      </header>
+
+      {/* Content */}
+      <div class="space-y-8 text-body leading-relaxed text-base font-medium">
+        <p>
+          A 10-minute speech is one of the most common formats in professional and academic settings. It is long enough to provide meaningful depth on a subject, but short enough that you must remain focused. 
+        </p>
+        <p>
+          Without clear pacing guidelines, it is easy to write a draft that is either too dense or leaves you with minutes of awkward silence. Let's break down the mechanics of a 10-minute speech.
+        </p>
+
+        <h2 class="text-2xl font-bold tracking-tight text-ink mt-8">The Target Word Count: 1,100 to 1,500 Words</h2>
+        <p>
+          Most standard speakers speak at a rate of 130 WPM. Over a 10-minute span, this results in a word count of <strong>1,300 words</strong>.
+        </p>
+
+        <ul class="list-disc pl-6 space-y-3">
+          <li><strong>Deliberate & Clear (110 WPM)</strong>: Suited for technical talks, statistics-heavy briefings, or larger lecture halls. Word count: <strong>1,100 words</strong>.</li>
+          <li><strong>Conversational & Engaged (130 WPM)</strong>: Recommended for keynotes, business proposals, and storytelling. Word count: <strong>1,300 words</strong>.</li>
+          <li><strong>Rapid & Energetic (150 WPM)</strong>: Typical for elevator pitches or high-impact, fast-moving presentations. Word count: <strong>1,500 words</strong>.</li>
+        </ul>
+
+        {/* Dynamic CTA Box */}
+        <div class="my-10 bg-canvas-soft border border-hairline rounded-[2rem] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+          <div class="space-y-1.5 text-center md:text-left">
+            <h4 class="text-sm font-bold text-ink">Need to check your draft's speaking time?</h4>
+            <p class="text-xs text-mute leading-relaxed max-w-sm">
+              Use the ToolTails Word Counter to calculate reading time and speaking speed instantly.
+            </p>
+          </div>
+          <a 
+            href="/word-counter" 
+            class="inline-flex items-center justify-center px-6 h-10 text-xs font-bold text-on-primary bg-primary hover:bg-primary/95 rounded-full shadow-md active:scale-95 transition-all whitespace-nowrap"
+          >
+            Check Word Count Now
+          </a>
+        </div>
+
+        <h2 class="text-2xl font-bold tracking-tight text-ink mt-10">Pacing Reference Table for 10-Minute Speeches</h2>
+        <div class="overflow-x-auto my-6 border border-hairline rounded-2xl shadow-inner bg-canvas">
+          <table class="w-full text-left border-collapse text-sm">
+            <thead>
+              <tr class="bg-canvas-soft border-b border-hairline font-bold text-ink">
+                <th class="p-4">Speaking Pace</th>
+                <th class="p-4">Speed (WPM)</th>
+                <th class="p-4">Total Words</th>
+                <th class="p-4">Double-Spaced Pages</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-hairline">
+              <tr>
+                <td class="p-4 font-bold text-ink">Slow & Deliberate</td>
+                <td class="p-4">110 WPM</td>
+                <td class="p-4">1,100 words</td>
+                <td class="p-4">~2.2 pages</td>
+              </tr>
+              <tr class="bg-canvas-soft/30">
+                <td class="p-4 font-bold text-ink">Conversational (Recommended)</td>
+                <td class="p-4">130 WPM</td>
+                <td class="p-4">1,300 words</td>
+                <td class="p-4">~2.6 pages</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-bold text-ink">Energetic & Fast</td>
+                <td class="p-4">150 WPM</td>
+                <td class="p-4">1,500 words</td>
+                <td class="p-4">~3.0 pages</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="text-2xl font-bold tracking-tight text-ink mt-10">How to Structure a 10-Minute Speech</h2>
+        <p>
+          Unlike shorter speeches, you need to divide a 10-minute speech into structural blocks to maintain momentum:
+        </p>
+
+        <ul class="list-decimal pl-6 space-y-4">
+          <li>
+            <strong>The Hook & Introduction (1.5 Minutes - ~200 Words)</strong>:
+            State your thesis, grab attention, and provide a brief outline of the next 8 minutes.
+          </li>
+          <li>
+            <strong>The Body (7.0 Minutes - ~900 Words)</strong>:
+            Dedicate about 2 to 2.5 minutes to each of your three main supporting points. Keep slides focused on key ideas, not walls of text.
+          </li>
+          <li>
+            <strong>The Conclusion & Call-to-Action (1.5 Minutes - ~200 Words)</strong>:
+            Summarize your main points, state the key takeaway, and close with a clear CTA or question.
+          </li>
+        </ul>
+
+        <h2 class="text-2xl font-bold tracking-tight text-ink mt-10">Crucial Delivery Reminders</h2>
+        <p>
+          Remember that reading slides takes time. If you have 10-15 slides, expect to spend 30-40 seconds per slide. Keep your written word count lower (closer to 1,200 words) if you have interactive elements, live demonstrations, or slide transitions.
+        </p>
+      </div>
+
+      {/* Article FAQs Section */}
+      <section class="mt-20 pt-10 border-t border-hairline">
+        <h3 class="text-xl font-bold tracking-tight text-ink mb-6">Frequently Asked Questions</h3>
+        <div class="space-y-6">
+          {faqs.map(faq => (
+            <div class="space-y-2">
+              <h4 class="font-bold text-ink text-sm">{faq.question}</h4>
+              <p class="text-body text-sm leading-relaxed">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+    </article>
+  </main>
+  
+  <SiteFooter />
+</Layout>

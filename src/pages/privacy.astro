@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/layout/SiteHeader.astro';
+import SiteFooter from '../components/layout/SiteFooter.astro';
+---
+
+<Layout title="Privacy Policy | Tooltails">
+  <SiteHeader />
+  
+  <main class="min-h-screen pt-16 pb-24 px-4 sm:px-6 bg-canvas">
+    <div class="max-w-3xl mx-auto">
+      <header class="mb-10">
+        <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-ink mb-3">Privacy Policy</h1>
+        <p class="text-sm font-medium text-mute tracking-wide uppercase">Last updated: June 2026</p>
+      </header>
+
+      <div class="space-y-8 text-body leading-relaxed">
+        <p class="text-lg font-medium text-ink">
+          Tooltails respects your privacy.
+        </p>
+
+        <ul class="space-y-4">
+          <li class="flex gap-4 items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-success shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span class="font-medium">No account required</span>
+          </li>
+          <li class="flex gap-4 items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-success shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span class="font-medium">No personal data collection</span>
+          </li>
+          <li class="flex gap-4 items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-success shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span class="font-medium">No user-generated text is stored on our servers</span>
+          </li>
+          <li class="flex gap-4 items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-success shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span class="font-medium">Calculations run locally in your browser whenever possible</span>
+          </li>
+          
+          <li class="flex gap-4 items-start pt-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-mute shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <span>We may use privacy-friendly analytics to improve the website</span>
+          </li>
+          <li class="flex gap-4 items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-mute shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <span>Third-party services such as hosting providers may collect technical logs</span>
+          </li>
+        </ul>
+
+        <div class="pt-10 mt-10 border-t border-hairline">
+          <h2 class="text-lg font-bold tracking-tight text-ink mb-2">Questions about privacy?</h2>
+          <p>Contact us at: <a href="mailto:hello@tooltails.com" class="text-primary font-bold hover:underline transition-all">hello@tooltails.com</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <SiteFooter />
+</Layout>

@@ -1,0 +1,151 @@
+---
+import Logo from './Logo.astro';
+
+interface Props {
+  toolName?: string;
+  toolCategory?: string;
+}
+
+const pathname = Astro.url.pathname;
+const normalizedPath = pathname.replace(/\/$/, "");
+
+const isWordCounterActive = normalizedPath === "" || normalizedPath === "/word-counter";
+const isToolsActive = normalizedPath === "/tools";
+const isBlogActive = normalizedPath === "/blog" || normalizedPath.startsWith("/blog");
+const isAboutActive = normalizedPath === "/about";
+const isContactActive = normalizedPath === "/contact";
+
+const getLinkClass = (isActive: boolean) => {
+  return `text-sm font-bold transition-colors px-3 py-1.5 rounded-full ${
+    isActive 
+      ? "bg-primary text-on-primary shadow-sm" 
+      : "text-body hover:text-ink hover:bg-canvas-soft-2"
+  }`;
+};
+
+const getMobileLinkClass = (isActive: boolean) => {
+  return `text-sm font-bold transition-colors px-4 py-3 rounded-lg ${
+    isActive 
+      ? "bg-primary text-on-primary" 
+      : "text-body hover:text-ink hover:bg-canvas-soft-2"
+  }`;
+};
+---
+<nav class="sticky top-0 z-50 h-16 border-b border-hairline bg-canvas/80 backdrop-blur-md transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between gap-4">
+    
+    {/* Left: Logo */}
+    <div class="flex items-center gap-4 shrink-0">
+      <a href="/" aria-label="Go to Tooltails homepage" class="inline-flex hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">
+        <Logo />
+      </a>
+    </div>
+
+    {/* Center: Navigation Links - Desktop Only */}
+    <div class="hidden md:flex items-center gap-1">
+      <a href="/word-counter" class={getLinkClass(isWordCounterActive)}>
+        Word Counter
+      </a>
+      <a href="https://tooltails.com" class={getLinkClass(isToolsActive)}>
+        Tools
+      </a>
+      <a href="/blog" class={getLinkClass(isBlogActive)}>
+        Blog
+      </a>
+      <a href="/about" class={getLinkClass(isAboutActive)}>
+        About
+      </a>
+      <a href="/contact" class={getLinkClass(isContactActive)}>
+        Contact
+      </a>
+    </div>
+
+    {/* Right: Actions */}
+    <div class="flex items-center gap-2 shrink-0">
+      {/* Theme Toggle Button */}
+      <button id="theme-toggle" class="relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-hairline bg-canvas transition-colors hover:bg-canvas-soft-2 focus:outline-none shadow-sm" aria-label="Toggle theme">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="sun-icon hidden dark:block text-ink"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="moon-icon block dark:hidden text-ink"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+      </button>
+
+      {/* Mobile Menu Button - Hamburger */}
+      <button 
+        id="mobile-menu-toggle" 
+        class="md:hidden relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-hairline bg-canvas transition-colors hover:bg-canvas-soft-2 text-ink focus:outline-none shadow-sm"
+        aria-label="Toggle mobile menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="menu-icon block"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="close-icon hidden"><line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line></svg>
+      </button>
+    </div>
+
+  </div>
+
+  {/* Mobile Menu Dropdown */}
+  <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 w-full border-b border-hairline bg-canvas/95 backdrop-blur-md shadow-lg transition-colors duration-300">
+    <div class="px-6 py-4 flex flex-col gap-1.5">
+      <a href="/word-counter" class={getMobileLinkClass(isWordCounterActive)}>
+        Word Counter
+      </a>
+      <a href="https://tooltails.com" class={getMobileLinkClass(isToolsActive)}>
+        Tools
+      </a>
+      <a href="/blog" class={getMobileLinkClass(isBlogActive)}>
+        Blog
+      </a>
+      <a href="/about" class={getMobileLinkClass(isAboutActive)}>
+        About
+      </a>
+      <a href="/contact" class={getMobileLinkClass(isContactActive)}>
+        Contact
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Theme Toggle
+  const toggle = document.getElementById('theme-toggle');
+  
+  const updateIcons = (isDark: boolean) => {
+    const sun = document.querySelector('.sun-icon');
+    const moon = document.querySelector('.moon-icon');
+    if (isDark) {
+      sun?.classList.remove('hidden');
+      moon?.classList.add('hidden');
+    } else {
+      sun?.classList.add('hidden');
+      moon?.classList.remove('hidden');
+    }
+  };
+
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  updateIcons(isDark);
+
+  toggle?.addEventListener('click', () => {
+    const isCurrentlyDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const newTheme = isCurrentlyDark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('tooltails-theme', newTheme);
+    updateIcons(!isCurrentlyDark);
+  });
+
+  // Mobile Menu Toggle
+  const menuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = menuToggle?.querySelector('.menu-icon');
+  const closeIcon = menuToggle?.querySelector('.close-icon');
+
+  menuToggle?.addEventListener('click', () => {
+    const isHidden = mobileMenu?.classList.contains('hidden');
+    if (isHidden) {
+      mobileMenu?.classList.remove('hidden');
+      menuIcon?.classList.add('hidden');
+      closeIcon?.classList.remove('hidden');
+    } else {
+      mobileMenu?.classList.add('hidden');
+      menuIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    }
+  });
+</script>
