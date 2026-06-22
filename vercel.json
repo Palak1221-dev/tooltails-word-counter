@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/word-counter/:path*",
+      "destination": "/:path*"
+    }
+  ]
+}
