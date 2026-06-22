@@ -9,11 +9,11 @@ interface Props {
 const pathname = Astro.url.pathname;
 const normalizedPath = pathname.replace(/\/$/, "");
 
-const isWordCounterActive = normalizedPath === "" || normalizedPath === "/word-counter";
+const isWordCounterActive = normalizedPath === "/word-counter" || normalizedPath === "/word-counter/word-counter";
 const isToolsActive = normalizedPath === "/tools";
-const isBlogActive = normalizedPath === "/blog" || normalizedPath.startsWith("/blog");
-const isAboutActive = normalizedPath === "/about";
-const isContactActive = normalizedPath === "/contact";
+const isBlogActive = normalizedPath === "/word-counter/blog" || normalizedPath.startsWith("/word-counter/blog");
+const isAboutActive = normalizedPath === "/word-counter/about";
+const isContactActive = normalizedPath === "/word-counter/contact";
 
 const getLinkClass = (isActive: boolean) => {
   return `text-sm font-bold transition-colors px-3 py-1.5 rounded-full ${
@@ -43,19 +43,19 @@ const getMobileLinkClass = (isActive: boolean) => {
 
     {/* Center: Navigation Links - Desktop Only */}
     <div class="hidden md:flex items-center gap-1">
-      <a href="/word-counter" class={getLinkClass(isWordCounterActive)}>
+      <a href="/word-counter/" class={getLinkClass(isWordCounterActive)}>
         Word Counter
       </a>
       <a href="https://tooltails.com" class={getLinkClass(isToolsActive)}>
         Tools
       </a>
-      <a href="/blog" class={getLinkClass(isBlogActive)}>
+      <a href="/word-counter/blog" class={getLinkClass(isBlogActive)}>
         Blog
       </a>
-      <a href="/about" class={getLinkClass(isAboutActive)}>
+      <a href="/word-counter/about" class={getLinkClass(isAboutActive)}>
         About
       </a>
-      <a href="/contact" class={getLinkClass(isContactActive)}>
+      <a href="/word-counter/contact" class={getLinkClass(isContactActive)}>
         Contact
       </a>
     </div>
@@ -84,19 +84,19 @@ const getMobileLinkClass = (isActive: boolean) => {
   {/* Mobile Menu Dropdown */}
   <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 w-full border-b border-hairline bg-canvas/95 backdrop-blur-md shadow-lg transition-colors duration-300">
     <div class="px-6 py-4 flex flex-col gap-1.5">
-      <a href="/word-counter" class={getMobileLinkClass(isWordCounterActive)}>
+      <a href="/word-counter/" class={getMobileLinkClass(isWordCounterActive)}>
         Word Counter
       </a>
       <a href="https://tooltails.com" class={getMobileLinkClass(isToolsActive)}>
         Tools
       </a>
-      <a href="/blog" class={getMobileLinkClass(isBlogActive)}>
+      <a href="/word-counter/blog" class={getMobileLinkClass(isBlogActive)}>
         Blog
       </a>
-      <a href="/about" class={getMobileLinkClass(isAboutActive)}>
+      <a href="/word-counter/about" class={getMobileLinkClass(isAboutActive)}>
         About
       </a>
-      <a href="/contact" class={getMobileLinkClass(isContactActive)}>
+      <a href="/word-counter/contact" class={getMobileLinkClass(isContactActive)}>
         Contact
       </a>
     </div>
